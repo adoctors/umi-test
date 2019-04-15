@@ -59,9 +59,16 @@ export default {
           component: './Welcome',
         },
         {
-          path: 'https://github.com/umijs/umi-blocks/tree/master/ant-design-pro',
-          name: 'more-blocks',
+          path: '/mock/test',
+          name: 'mock-test',
           icon: 'block',
+          component: './Mock/Mock',
+        },
+        {
+          path: '/table/columnswidth',
+          name: 'columns-width',
+          icon: 'block',
+          component: './Table/ColumnsWidth',
         },
       ],
     },

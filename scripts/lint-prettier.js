@@ -6,9 +6,10 @@
  *----------*****--------------
  */
 
-const glob = require('glob');
+// const glob = require('glob');
 const prettier = require('prettier');
 const fs = require('fs');
+
 const prettierConfigPath = require.resolve('../.prettierrc');
 
 const files = process.argv.slice(2);
