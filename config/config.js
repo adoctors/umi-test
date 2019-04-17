@@ -70,6 +70,12 @@ export default {
           icon: 'block',
           component: './Table/ColumnsWidth',
         },
+        {
+          path: '/dnd',
+          name: 'react-dnd',
+          icon: 'block',
+          component: './Dnd/index',
+        },
       ],
     },
   ],

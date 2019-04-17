@@ -4,3 +4,27 @@ const reg = /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(
 export function isUrl(path) {
   return reg.test(path);
 }
+
+// export const Log=(()=>{
+//   if(process.env.NODE_ENV==="development"){
+//     return {
+//       error: (...arg)=> {
+//         console.error(...arg);
+//       }, 
+//       info: (...arg)=> {
+//         console.info(...arg);
+//       }, 
+//       warn: (...arg)=> {
+//         console.warn(...arg);
+//       }, 
+//     }
+//   }
+// })();
+
+
+export const Log=(...arg)=>{
+  if(arg){
+    console.log(...arg)
+  }
+}
+
