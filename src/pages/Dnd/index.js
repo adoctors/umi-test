@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import TableDnd from './TableDnd';
-// import Transfer from './Transfer';
-import PDnd from './PDnd';
+// import TableDnd from './Table/TableDnd';
+import Transfer from './CheckedAll/Transfer';
+import TransferDnd from './TransferDnd/TransferDnd';
+// import PDnd from './P/PDnd';
 // import {Log} from '../../utils/utils';
 
 
@@ -10,6 +11,7 @@ import styles from './index.less';
 class Dnd extends PureComponent {
 
   componentDidMount(){
+    console.log('console')
   }
 
   render() {
@@ -18,7 +20,8 @@ class Dnd extends PureComponent {
         <p>拖拽demo</p>
         {/* <TableDnd /> */}
         {/* <Transfer /> */}
-        <PDnd />
+        {/* <PDnd /> */}
+        <TransferDnd />
       </div>
     )
   }
