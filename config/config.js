@@ -1,6 +1,8 @@
 // ref: https://umijs.org/config/
 import { primaryColor } from '../src/defaultSettings';
 
+import routesConfig from './routes.config';
+
 export default {
   plugins: [
     [
@@ -40,45 +42,7 @@ export default {
   /**
    * 路由相关配置
    */
-  routes: [
-    {
-      path: '/user',
-      component: '../layouts/UserLayout',
-      routes: [{ path: '/user', component: './Welcome' }],
-    },
-    {
-      path: '/',
-      component: '../layouts/BasicLayout',
-      routes: [
-        { path: '/', redirect: '/welcome' },
-        // dashboard
-        {
-          path: '/welcome',
-          name: 'welcome',
-          icon: 'smile',
-          component: './Welcome',
-        },
-        {
-          path: '/mock/test',
-          name: 'mock-test',
-          icon: 'block',
-          component: './Mock/Mock',
-        },
-        {
-          path: '/table/columnswidth',
-          name: 'columns-width',
-          icon: 'block',
-          component: './Table/ColumnsWidth',
-        },
-        {
-          path: '/dnd',
-          name: 'react-dnd',
-          icon: 'block',
-          component: './Dnd/index',
-        },
-      ],
-    },
-  ],
+  routes:routesConfig,
   disableRedirectHoist: true,
 
   /**
@@ -102,7 +66,7 @@ export default {
   manifest: {
     basePath: '/',
   },
-  base:'/dist',       // 非根目录配置
+  // base:'/dist',       // 非根目录配置
   treeShaking: true,
   hash: true,
   uglifyJSOptions(opts) {

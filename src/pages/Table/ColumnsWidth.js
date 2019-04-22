@@ -2,6 +2,7 @@
 import React from 'react';
 import { Table } from 'antd';
 import { Resizable } from 'react-resizable';
+import {Log,Logs} from '../../utils/utils';
 
 import './ColumnsWidth.less';
 
@@ -46,6 +47,8 @@ class ColumnsWidth extends React.Component {
     }],
   };
 
+  
+
   components = {
     header: {
       cell: ResizeableTitle,
@@ -71,6 +74,12 @@ class ColumnsWidth extends React.Component {
     type: 'income',
     note: 'transfer',
   }];
+
+  componentDidMount(){
+    Log.info('abc',123,[1,2,3],{name:'adc'})
+    console.log(Logs('123'))
+    
+  }
 
   handleResize = index => (e, { size }) => {
     this.setState(({ columns }) => {

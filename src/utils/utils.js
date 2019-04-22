@@ -5,26 +5,34 @@ export function isUrl(path) {
   return reg.test(path);
 }
 
-// export const Log=(()=>{
-//   if(process.env.NODE_ENV==="development"){
-//     return {
-//       error: (...arg)=> {
-//         console.error(...arg);
-//       }, 
-//       info: (...arg)=> {
-//         console.info(...arg);
-//       }, 
-//       warn: (...arg)=> {
-//         console.warn(...arg);
-//       }, 
-//     }
-//   }
-// })();
+
+const development=process.env.NODE_ENV==="development";
+
+export const Log=(()=>{
+  let prefix = {
+    error: ()=> {}, 
+    info: ()=> {}, 
+    warn: ()=> {}, 
+  }
+  if(development){
+    prefix = {
+      error: (...arg)=> {
+        console.error(...arg);
+      }, 
+      info: (...arg)=> {
+        console.info(...arg);
+      }, 
+      warn: (...arg)=> {
+        console.warn(...arg);
+      }, 
+    }
+  }
+  return prefix;
+})();
 
 
-export const Log=(...arg)=>{
-  if(arg){
+export const Logs=(...arg)=>{
+  if(development){
     console.log(...arg)
   }
 }
-
