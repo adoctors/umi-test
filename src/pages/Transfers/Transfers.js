@@ -1,11 +1,11 @@
 import React from 'react';
 import { Checkbox,Button,Icon  } from 'antd';
-import { DragDropContextProvider } from 'react-dnd';
+import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend'
 import update from 'immutability-helper';
-import DragableBody from './BodyRow';
+import DragableBody from './BodyRows';
 
-import styles from './Transfer.less';
+import styles from './Transfers.less';
 
 const  deepCopy= (obj)=>JSON.parse(JSON.stringify(obj));
 class Transfer extends React.Component {
@@ -94,7 +94,6 @@ class Transfer extends React.Component {
       ...item,
       checked:e.target.checked,
     }));
-    console.log(list)
     this.setState({[listName]:list,[selectListName]:list,[allCheckedName]:e.target.checked});
   }
 
@@ -151,23 +150,22 @@ class Transfer extends React.Component {
     const { leftList, rightList,
       leftAllChecked, rightAllChecked} = this.state;
 
-
-    const blocks=(
-      <DragDropContextProvider backend={HTML5Backend}>
-        <div className="App">
-          {rightList.map((item, index) => 
-            <DragableBody
-              id={item.id}
-              index={index}
-              moveFN={this.moveFN}
-              key={item.id} 
-              item={item}
-              // onChange={e=>this.checkboxOnchange(e,index,item.name,'right')}
-              checkboxOnchange={this.checkboxOnchange}
-            />
-          )}
-        </div>
-      </DragDropContextProvider>
+    const RightList=(
+      // <DragDropContextProvider backend={HTML5Backend}>
+      <div className="App">
+        {rightList.map((item, index) => 
+          <DragableBody
+            id={item.id}
+            index={index}
+            moveFN={this.moveFN}
+            key={item.id} 
+            item={item}
+            // onChange={e=>this.checkboxOnchange(e,index,item.name,'right')}
+            checkboxOnchange={this.checkboxOnchange}
+          />
+        )}
+      </div>
+      // </DragDropContextProvider>
     );  
     return (
       <div className={styles.wrap}>
@@ -208,21 +206,11 @@ class Transfer extends React.Component {
             </Checkbox>
             {/* <span>{`${rightSelect.length} / ${rightList.length}`}</span> */}
           </div>
-          {/* {
-            rightList.map((item,index)=>
-              <div key={item.id}>
-                <Checkbox 
-                  onChange={e=>this.checkboxOnchange(e,index,item.name,'right')}
-                  checked={item.checked}
-                >{item.name}
-                </Checkbox>
-              </div>)
-          } */}
-          {blocks}
+          {RightList}
         </div>
       </div>
     );
   }
 }
 
-export default Transfer;
+export default DragDropContext(HTML5Backend)(Transfer);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DragDropContextProvider } from 'react-dnd';
+import { DragDropContextProvider,DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend'
 import update from 'immutability-helper';
 import PBodyRow from './PBodyRow';
@@ -27,20 +27,22 @@ class PDnd extends Component {
     render() {
         let { cardList } = this.state;
         return (
-          <DragDropContextProvider backend={HTML5Backend}>
-            <div className="App">
-              {cardList.map((item, index) => 
-                <PBodyRow
-                  id={item}
-                  index={index}
-                  moveFN={this.moveFN}
-                  key={item} 
-                />
-              )}
-            </div>
-          </DragDropContextProvider>
+          // <DragDropContextProvider backend={HTML5Backend}>   // 一个
+          <div className="App">     
+            {cardList.map((item, index) => 
+              <PBodyRow
+                id={item}
+                index={index}
+                moveFN={this.moveFN}
+                key={item} 
+              />
+            )}
+          </div>
+          // </DragDropContextProvider>
         );
     }
 }
 
-export default PDnd;
+// export default PDnd;     -> 这样页面中只能使用一个
+
+export default DragDropContext(HTML5Backend)(PDnd);     // 这样页面中可以使用多个

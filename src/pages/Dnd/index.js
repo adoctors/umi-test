@@ -20,6 +20,7 @@ class Dnd extends PureComponent {
         {/* <TableDnd /> */}
         {/* <Transfer /> */}
         <PDnd />
+        <PDnd />
       </div>
     )
   }
