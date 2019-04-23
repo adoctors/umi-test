@@ -1,8 +1,10 @@
 
 import React from 'react';
-import { Table } from 'antd';
+import { Table,Divider  } from 'antd';
 import { Resizable } from 'react-resizable';
 import {Log,Logs} from '../../utils/utils';
+
+import SetWidth from './SetWidth/SetWidth';
 
 import './ColumnsWidth.less';
 
@@ -76,8 +78,8 @@ class ColumnsWidth extends React.Component {
   }];
 
   componentDidMount(){
-    Log.info('abc',123,[1,2,3],{name:'adc'})
-    console.log(Logs('123'))
+    // Log.info('abc',123,[1,2,3],{name:'adc'})
+    // console.log(Logs('123'))
     
   }
 
@@ -102,12 +104,18 @@ class ColumnsWidth extends React.Component {
     }));
 
     return (
-      <Table
-        bordered
-        components={this.components}
-        columns={columns}
-        dataSource={this.data}
-      />
+      <div>
+        <Table
+          bordered
+          components={this.components}
+          columns={columns}
+          dataSource={this.data}
+        />
+
+        <Divider orientation="left" style={{marginBottom:30}}>自定义</Divider>
+        <SetWidth /> 
+      </div>
+      
     );
   }
 }

@@ -1,0 +1,42 @@
+.rcrTableWrap{
+  width:100%;
+  border:1px solid #000;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+// 边框；right&borrom
+.rcrBorderRight{
+  border-right: 1px solid #000;
+}
+.rcrBorderBottom{
+  border-bottom: 1px solid #000;
+}
+
+
+
+// 表格头部各列名称
+.rcrTableTitWrap{
+  display: flex;
+  border-bottom: 1px solid #000;
+}
+// 单个列单元格
+.rcrTableTit{
+  position: relative;
+  top:0;
+  left:0;
+  .rcrMoveBtn{
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    right:-2px;
+    top:0;
+    // background:pink;
+    cursor: col-resize;
+  }
+}
+// 行
+.rcrTableRow{
+  display: flex;
+}
+
