@@ -60,6 +60,7 @@ class MyTable extends Component {
         }
         // tableWidth
         this.setState({columns,tableWidth:totalWidth});
+        this.setLastColWidth();
       }
       document.onmouseup = () => {
         document.onmousemove = null;
@@ -73,9 +74,9 @@ class MyTable extends Component {
       const {columns,tableWidth}=this.state;
       const {dataSource}=this.props;
       return (
-        <div className={styles.rcrTableWrap}>
+        <div className={styles.rcrTableWrap} ref={this.tableWrapDOM}>
           {/* 表头 */}
-          <div className={styles.rcrTableTitWrap} style={{width:tableWidth}} ref={this.tableWrapDOM}>
+          <div className={styles.rcrTableTitWrap} style={{width:tableWidth}}>
             {
               columns.map((item,index)=>
                 <div 
@@ -104,7 +105,7 @@ class MyTable extends Component {
                     <div 
                       key={column.dataIndex} 
                       style={{width:column.width||150}}
-                      className={classNames({[styles.rcrBorderRight]:i!==columns.length-1})} 
+                      className={classNames(styles.rcrEllipsis,{[styles.rcrBorderRight]:i!==columns.length-1})} 
                     >
                       {column.render&&column.render(item[column.dataIndex],item)||item[column.dataIndex]}
                     </div>)}
