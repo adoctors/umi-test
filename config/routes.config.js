@@ -40,12 +40,6 @@ export default [
         icon: 'block',
         component: './Transfer/Transfer',
       },
-      {
-        path: '/transfers',
-        name: 'transfers',
-        icon: 'block',
-        component: './Transfers/Transfers',
-      }
     ],
   },
 ];

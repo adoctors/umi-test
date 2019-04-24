@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 
 import styles from './MyTable.less';
-
+/**
+ *
+ *
+ * @class MyTable
+ * @extends {Component}
+ * dataSource       列表数据源
+ * columns          表头
+ */
 class MyTable extends Component {
 
     constructor(props){
