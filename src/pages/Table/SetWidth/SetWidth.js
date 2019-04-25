@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Icon,Dropdown,Menu } from 'antd';
 
 import MyTable from '../MyTable/MyTable';
 
@@ -107,12 +108,40 @@ class SetWidth extends Component {
         width:200,
       },];
 
+
+      const isAdmin=true;
+
+      const menu = (
+        <Menu onClick={this.setMenuClic}>
+          <Menu.Item key={0}>
+            我的列表显示字段设置
+          </Menu.Item>
+          <Menu.Item key={1}>
+            公司默认显示字段设置
+          </Menu.Item>
+        </Menu>
+      );
+
+      const header=isAdmin?(
+        <Dropdown overlay={menu} trigger={['click']}>
+          <Icon type="setting" />
+        </Dropdown>
+        ):(
+          <Icon type="setting" onClick={this.showColumnsModal} />
+        )
+
       return (
-        <MyTable
-          dataSource={dataSource}
-          columns={columns}
-          ellipsis
-        />
+        <div className={styles.myTableWrap}>
+          <p>自定义可改变列宽度table展示</p>
+          <MyTable
+            columns={columns}
+            // dataSource={[]}
+            dataSource={dataSource}
+            headerBlock={header}
+            ellipsis
+          />
+        </div>
+        
       );
     }
 }

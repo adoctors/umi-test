@@ -112,7 +112,7 @@ class ColumnsWidth extends React.Component {
           dataSource={this.data}
         />
 
-        <Divider orientation="left" style={{marginBottom:30}}>自定义</Divider>
+        {/* <Divider orientation="left" style={{marginBottom:30}}>自定义</Divider> */}
         <SetWidth /> 
       </div>
       
