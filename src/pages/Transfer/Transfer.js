@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button  } from 'antd';
 
 import Transfers from './Transfers/Transfers';
 
@@ -8,17 +7,17 @@ class Transfer extends React.Component {
   state = {
     leftList:[
       {
-        name:'leftName1',
+        name:'明确时间提醒',
         id:'L1',
         checked:false,
       },
       {
-        name:'leftName2',
+        name:'晚点提醒',
         id:'L2',
         checked:false,
       },
       {
-        name:'leftName3',
+        name:'拖延',
         id:'L3',
         checked:false,
       },
@@ -26,23 +25,38 @@ class Transfer extends React.Component {
     leftSelect:[],
     rightList:[
       {
-        name:'rightName1',
+        name:'价格异议',
         id:'R1',
         checked:false,
       },
       {
-        name:'rightName2',
+        name:'讽刺',
         id:'R2',
         checked:false,
       },
       {
-        name:'rightName3',
+        name:'辱骂',
         id:'R3',
         checked:false,
       },
       {
-        name:'rightName4',
+        name:'站外推广',
         id:'R4',
+        checked:false,
+      },
+      {
+        name:'小程序',
+        id:'R5',
+        checked:false,
+      },
+      {
+        name:'VIP',
+        id:'R6',
+        checked:false,
+      },
+      {
+        name:'已邀约',
+        id:'R7',
         checked:false,
       },
     ],

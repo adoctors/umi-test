@@ -9,6 +9,7 @@ import styles from './MyTable.less';
  * @extends {Component}
  * dataSource       列表数据源
  * columns          表头
+ * ellipsis         单元格是否溢出隐藏,默认false
  */
 class MyTable extends Component {
 
@@ -52,20 +53,20 @@ class MyTable extends Component {
     }
 
     columnMouseDown = (e,index,refName) => {
+      // 记录鼠标点下时的宽度的鼠标位置
+      let x=e.clientX;
+      const currentDomWidth=this.refs[refName].scrollWidth;
       document.onmousemove = moveEvt => {
         // 鼠标左侧的距离
-        let offsetLeft = moveEvt.clientX;
-        // 元素距离屏幕左侧的距离
-        const DOMOffsetLeft=this.refs[refName].offsetLeft;
-        // 当前单元格的宽度
-        const width=offsetLeft-DOMOffsetLeft;
+        const offsetLeft = moveEvt.clientX;
+        // 宽度加上鼠标变化的偏移量
+        const width=currentDomWidth+(offsetLeft-x);
         let {columns}=this.state;
         columns[index].width=width;
         let totalWidth=0;
         for(let i=0;i<columns.length;i++){
           totalWidth+=columns[i].width;
         }
-        // tableWidth
         this.setState({columns,tableWidth:totalWidth});
         this.setLastColWidth();
       }
@@ -79,7 +80,7 @@ class MyTable extends Component {
     render() {
 
       const {columns,tableWidth}=this.state;
-      const {dataSource}=this.props;
+      const {dataSource,ellipsis}=this.props;
       return (
         <div className={styles.rcrTableWrap} ref={this.tableWrapDOM}>
           {/* 表头 */}
@@ -88,7 +89,7 @@ class MyTable extends Component {
               columns.map((item,index)=>
                 <div 
                   key={item.key} 
-                  className={classNames(styles.rcrTableTit,{[styles.rcrBorderRight]:index!==dataSource.length-1})} 
+                  className={classNames(styles.rcrCol,styles.rcrTableTit,{[styles.rcrBorderRight]:index!==columns.length-1})} 
                   style={{width:item.width||150}}
                   ref={item.dataIndex}
                 >{item.title}
@@ -112,7 +113,7 @@ class MyTable extends Component {
                     <div 
                       key={column.dataIndex} 
                       style={{width:column.width||150}}
-                      className={classNames(styles.rcrEllipsis,{[styles.rcrBorderRight]:i!==columns.length-1})} 
+                      className={classNames(styles.rcrCol,{[styles.rcrBorderRight]:i!==columns.length-1,[styles.rcrEllipsis]:ellipsis})} 
                     >
                       {column.render&&column.render(item[column.dataIndex],item)||item[column.dataIndex]}
                     </div>)}

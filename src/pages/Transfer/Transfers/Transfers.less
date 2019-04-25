@@ -1,12 +1,28 @@
 .wrap{
   display:flex;
   .conWrap{
-    width:150px;
-    height:200px;
+    width:180px;
+    height:220px;
     border:1px solid #e1e1e1;
     border-radius: 10px;
-    box-sizing: border-box;
-    padding:15px;
+    
+    background-color:#fff;
+    .listCon{
+      box-sizing: border-box;
+      padding:0 15px;
+      height:184px;
+      overflow-y:auto; 
+      .listOption{
+        height:40px;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .listTitle{
+      box-sizing: border-box;
+      padding:8px 15px 4px 15px;
+      border-bottom:1px solid #e1e1e1;
+    }
   }
   .transferBtnCon{
     width:80px;

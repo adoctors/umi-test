@@ -36,3 +36,5 @@ export const Logs=(...arg)=>{
     console.log(...arg)
   }
 }
+
+export const deepCopy= (obj)=>JSON.parse(JSON.stringify(obj));

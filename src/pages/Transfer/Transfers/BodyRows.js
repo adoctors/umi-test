@@ -56,13 +56,14 @@ class BodyRow extends Component {
         // id,
         item,
         index,
+        className,
         checkboxOnchange,
     } = this.props;
     const style = {cursor: 'move' };
     // 实际展示出来的东西
     return connectDragSource(
         connectDropTarget(
-          <div style={style}>
+          <div style={style} className={className}>
             <Checkbox 
               onChange={()=>checkboxOnchange(!item.checked,index,item.name,'right')}
               // onChange={e=>this.checkboxOnchange(e)}

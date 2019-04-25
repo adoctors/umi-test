@@ -9,8 +9,6 @@ import styles from './Transfers.less';
 
 const  deepCopy= (obj)=>JSON.parse(JSON.stringify(obj));
 
-
-
 /**
  *
  *
@@ -173,7 +171,7 @@ class Transfer extends React.Component {
       leftAllChecked, rightAllChecked} = this.state;
     const RightList=(
       // <DragDropContextProvider backend={HTML5Backend}>
-      <div className="App">
+      <div className={styles.listCon}>
         {rightList.map((item, index) => 
           <DragableBody
             id={item.id}
@@ -181,6 +179,7 @@ class Transfer extends React.Component {
             moveFN={this.moveFN}
             key={item.id} 
             item={item}
+            className={styles.listOption}
             checkboxOnchange={this.checkboxOnchange}
           />
         )}
@@ -190,7 +189,7 @@ class Transfer extends React.Component {
     return (
       <div className={styles.wrap}>
         <div className={styles.conWrap}>
-          <div style={{borderBottom:'1px solid #e1e1e1'}}>
+          <div className={styles.listTitle}>
             <Checkbox 
               checked={leftAllChecked}
               onChange={(e)=>this.checkAll(e,'left')}
@@ -198,16 +197,19 @@ class Transfer extends React.Component {
             </Checkbox>
             {/* <span>{`${leftSelect.length} / ${leftList.length}`}</span> */}
           </div>
-          {
-            leftList.map((item,index)=>
-              <div key={item.id}>
-                <Checkbox 
-                  onChange={e=>this.checkboxOnchange(e,index,item.name,'left')}
-                  checked={item.checked}
-                >{item.name}
-                </Checkbox>
-              </div>)
-          }
+          <div className={styles.listCon}>
+            {
+              leftList.map((item,index)=>
+                <div key={item.id} className={styles.listOption}>
+                  <Checkbox 
+                    onChange={e=>this.checkboxOnchange(e,index,item.name,'left')}
+                    checked={item.checked}
+                  >{item.name}
+                  </Checkbox>
+                </div>)
+            }
+          </div>
+          
         </div>
         <div className={styles.transferBtnCon}>
           <Button size="small" style={{marginBottom:15}} onClick={()=>this.toChange('left')}>
@@ -218,7 +220,7 @@ class Transfer extends React.Component {
           </Button>
         </div>
         <div className={styles.conWrap}>
-          <div style={{borderBottom:'1px solid #e1e1e1'}}>
+          <div className={styles.listTitle}>
             <Checkbox 
               checked={rightAllChecked}
               onChange={(e)=>this.checkAll(e,'right')}
