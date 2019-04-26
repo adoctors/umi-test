@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import isEqual from 'lodash/isEqual';
 import { Empty, Pagination } from 'antd';
 
 import styles from './MyTable.less';
@@ -30,13 +31,13 @@ class MyTable extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
+
       let data={};
-      let {columns,dataSource}=state;
-      if(columns.length<1){
+      if(!isEqual(props.columns, state.columns)){
         data.columns=props.columns;
       }
 
-      if(dataSource.length<1){
+      if(!isEqual(props.dataSource, state.dataSource)){
         if(props.pagination.pageSize){
           const pageDataSource = (currentPage,size) => {
             const propsDataSource=props.dataSource;
@@ -55,7 +56,10 @@ class MyTable extends Component {
     }
 
     componentDidMount(){
-      this.setLastColWidth();
+      const {columns}=this.state;
+      if(columns&&columns.length){
+        this.setLastColWidth();
+      }
     }
 
     setLastColWidth = () => {
@@ -107,17 +111,25 @@ class MyTable extends Component {
     }
 
     pageChange = (page,pageSize) => {
-      const {onChange}=this.props;
+      const {onChange,pagination:{total},dataSource}=this.props;
       if(onChange) onChange(page,pageSize);
-      const pageDataSource = (currentPage,size) => {
-        const {dataSource}=this.props
-        const start=(currentPage-1)*size;
-        const end=start+size;
-        return dataSource.slice(start,end);
+
+      if(dataSource.length>pageSize){
+        const pageDataSource = (currentPage,size) => {
+          const start=(currentPage-1)*size;
+          const end=start+size;
+          return dataSource.slice(start,end);
+        }
+        this.setState({
+          dataSource:pageDataSource(page,pageSize)
+        })
+      }else{
+        this.setState({
+          dataSource,
+        })
       }
-      this.setState({
-        dataSource:pageDataSource(page,pageSize)
-      })
+
+
     }
 
     render() {
@@ -171,10 +183,10 @@ class MyTable extends Component {
             </div>
           </div>
           
-          {pagination&&(
+          {pagination&&dataSource&&dataSource.length?(
             <div className={classNames(styles.paginationWrap,placement)}>
               <Pagination onChange={this.pageChange} {...pagination} />
-            </div>)
+            </div>):''
           }
         </div>
       );
