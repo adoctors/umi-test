@@ -187,7 +187,7 @@ class Transfer extends React.Component {
       // </DragDropContextProvider>
     );  
     return (
-      <div className={styles.wrap}>
+      <div className={styles.rcrTransferswrap}>
         <div className={styles.conWrap}>
           <div className={styles.listTitle}>
             <Checkbox 

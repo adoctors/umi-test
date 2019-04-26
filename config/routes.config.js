@@ -40,6 +40,12 @@ export default [
         icon: 'block',
         component: './Transfer/Transfer',
       },
+      {
+        path: '/carousel',
+        name: 'carousel',
+        icon: 'block',
+        component: './Carousel/index',
+      },
     ],
   },
 ];
