@@ -1,4 +1,5 @@
 import React from 'react';
+import isEqual from 'lodash/isEqual';
 import { Checkbox,Button,Icon  } from 'antd';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend'
@@ -70,6 +71,26 @@ class Transfer extends React.Component {
     // 获取组件外部的数据
     const {leftList,leftSelect,rightList,rightSelect,}=this.props;
     this.setState({leftList,leftSelect,rightList,rightSelect,});
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    let data={};
+    if(!isEqual(props.leftList, state.leftList)&&state.leftList.length<1){
+      data.leftList=props.leftList;
+    }
+
+    if(!isEqual(props.leftSelect, state.leftSelect)&&state.leftSelect.length<1){
+      data.leftSelect=props.leftSelect; 
+    }
+
+    if(!isEqual(props.rightList, state.rightList)&&state.rightList.length<1){
+      data.rightList=props.rightList;
+    }
+
+    if(!isEqual(props.rightSelect, state.rightSelect)&&state.rightSelect.length<1){
+      data.rightSelect=props.rightSelect; 
+    }
+    return data;
   }
 
   componentWillUpdate(nextProps, nextState) {
