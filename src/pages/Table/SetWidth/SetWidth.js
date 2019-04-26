@@ -9,6 +9,15 @@ class SetWidth extends Component {
 
     state = {}
 
+    onRowClick = (item) => {
+      console.log(item)
+    }
+
+
+    pageChange = (page,size) => {
+      console.log(page,size)
+    }
+
     render() {
 
       const dataSource = [{
@@ -130,14 +139,28 @@ class SetWidth extends Component {
           <Icon type="setting" onClick={this.showColumnsModal} />
         )
 
+
+      const showTotal = (total, range) => `共${total}条记录，当前展示第${range[0]}至第${range[1]}条`;
+
+      const pagination = {
+        total: dataSource.length,
+        showTotal,
+        // showQuickJumper: true,
+        pageSize: 3,
+      };
+
       return (
         <div className={styles.myTableWrap}>
           <p>自定义可改变列宽度table展示</p>
           <MyTable
             columns={columns}
             // dataSource={[]}
+            onChange={this.pageChange}
             dataSource={dataSource}
             headerBlock={header}
+            pagination={pagination}
+            onRow={this.onRowClick}
+            paginationPlacement="right"
             ellipsis
           />
         </div>

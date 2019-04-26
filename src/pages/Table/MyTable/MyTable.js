@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { Empty  } from 'antd';
+import { Empty, Pagination } from 'antd';
 
 import styles from './MyTable.less';
 /**
@@ -11,6 +11,10 @@ import styles from './MyTable.less';
  * dataSource       列表数据源
  * columns          表头
  * ellipsis         单元格是否溢出隐藏,默认false
+ * onRow            点击行的操作
+ * headerBlock      可插入头部信息
+ * pagination       分页相关
+ * paginationPlacement  分页所处方向,可选值：left、right、center。默认left
  */
 class MyTable extends Component {
 
@@ -21,13 +25,33 @@ class MyTable extends Component {
 
     state = {
       columns : [],
+      dataSource:[],
       tableWidth:'100%',
     }
 
     static getDerivedStateFromProps(props, state) {
-      return state.columns.length<1?{
-        columns:props.columns
-      }:null;
+      let data={};
+      let {columns,dataSource}=state;
+      if(columns.length<1){
+        data.columns=props.columns;
+      }
+
+      if(dataSource.length<1){
+        if(props.pagination.pageSize){
+          const pageDataSource = (currentPage,size) => {
+            const propsDataSource=props.dataSource;
+            const start=(currentPage-1)*size;
+            const end=start+size;
+            return propsDataSource.slice(start,end);
+          }
+          data.dataSource=pageDataSource(1,props.pagination.pageSize)
+     
+        }else{
+          data.dataSource=props.dataSource;
+        }
+        
+      }
+      return data;
     }
 
     componentDidMount(){
@@ -77,11 +101,29 @@ class MyTable extends Component {
       }
     }
 
+    rowClick = (item) => {
+      const {onRow}=this.props;
+      if(item) onRow(item);
+    }
+
+    pageChange = (page,pageSize) => {
+      const {onChange}=this.props;
+      if(onChange) onChange(page,pageSize);
+      const pageDataSource = (currentPage,size) => {
+        const {dataSource}=this.props
+        const start=(currentPage-1)*size;
+        const end=start+size;
+        return dataSource.slice(start,end);
+      }
+      this.setState({
+        dataSource:pageDataSource(page,pageSize)
+      })
+    }
 
     render() {
-
-      const {columns,tableWidth}=this.state;
-      const {dataSource,ellipsis,headerBlock}=this.props;
+      const {columns,tableWidth,dataSource}=this.state;
+      const {ellipsis,headerBlock,pagination,paginationPlacement}=this.props;
+      const placement=styles[paginationPlacement]||'';
       return (
         <div className={styles.rcrTableWrapRelative}>
           <div className={styles.rcrTableWrap} ref={this.tableWrapDOM}>
@@ -111,6 +153,7 @@ class MyTable extends Component {
                   <div 
                     className={classNames(styles.rcrTableRow,{[styles.rcrBorderBottom]:index!==dataSource.length-1})}
                     key={item.key}
+                    onClick={()=>this.rowClick(item)}
                   >
                     {columns.map((column,i)=>
                       <div 
@@ -125,12 +168,14 @@ class MyTable extends Component {
                   <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
                 )
               }
-
-
-              
             </div>
           </div>
-
+          
+          {pagination&&(
+            <div className={classNames(styles.paginationWrap,placement)}>
+              <Pagination onChange={this.pageChange} {...pagination} />
+            </div>)
+          }
         </div>
       );
     }
