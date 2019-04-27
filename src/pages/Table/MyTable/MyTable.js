@@ -141,55 +141,56 @@ class MyTable extends Component {
         <div className={styles.rcrTableWrapRelative}>
           <Spin size="large" spinning={loading===undefined?false:loading}>
             <div className={styles.rcrTableWrap} ref={this.tableWrapDOM}>
-            {/* 表头 */}
-            <div className={styles.rcrTableTitWrap} style={{width:tableWidth}}>
-              {headerBlock&&headerBlock}
-              {
-                columns&&columns.map((item,index)=>
-                  <div 
-                    key={item.key} 
-                    className={classNames(styles.rcrCol,styles.rcrTableTit,{[styles.rcrBorderRight]:index!==columns.length-1})} 
-                    style={{width:item.width||150}}
-                    ref={item.dataIndex}
-                  >{item.title}
-                    {/* 用于拖拽的部分 */}
-                    <div
-                      className={styles.rcrMoveBtn} 
-                      onMouseDown={(e)=>this.columnMouseDown(e,index,item.dataIndex)}
-                    />
-                  </div>)
-              }
+              {/* 表头 */}
+              <div className={styles.rcrTableTitWrap} style={{width:tableWidth}}>
+                {headerBlock&&headerBlock}
+                {
+                  columns&&columns.map((item,index)=>
+                    <div 
+                      key={item.key} 
+                      className={classNames(styles.rcrCol,styles.rcrTableTit,{[styles.rcrBorderRight]:index!==columns.length-1})} 
+                      style={{width:item.width||150}}
+                      ref={item.dataIndex}
+                    >{item.title}
+                      {/* 用于拖拽的部分 */}
+                      <div
+                        className={styles.rcrMoveBtn} 
+                        onMouseDown={(e)=>this.columnMouseDown(e,index,item.dataIndex)}
+                      />
+                    </div>)
+                }
+              </div>
+              {/* 数据 */}
+              <div className={styles.rcrTableBodyWrap} style={{width:tableWidth}}>
+                {
+                  dataSource&&dataSource.length?dataSource.map((item,index)=>(
+                    <div 
+                      className={classNames(styles.rcrTableRow,{[styles.rcrBorderBottom]:index!==dataSource.length-1})}
+                      key={item.key}
+                      onClick={()=>this.rowClick(item)}
+                    >
+                      {columns.map((column,i)=>
+                        <div 
+                          key={column.dataIndex} 
+                          style={{width:column.width||150}}
+                          className={classNames(styles.rcrCol,{[styles.rcrBorderRight]:i!==columns.length-1,[styles.rcrEllipsis]:ellipsis})} 
+                        >
+                          {column.render&&column.render(item[column.dataIndex],item)||item[column.dataIndex]}
+                        </div>)}
+                    </div>
+                  )):(
+                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                  )
+                }
+              </div>
             </div>
-            {/* 数据 */}
-            <div className={styles.rcrTableBodyWrap} style={{width:tableWidth}}>
-              {
-                dataSource&&dataSource.length?dataSource.map((item,index)=>(
-                  <div 
-                    className={classNames(styles.rcrTableRow,{[styles.rcrBorderBottom]:index!==dataSource.length-1})}
-                    key={item.key}
-                    onClick={()=>this.rowClick(item)}
-                  >
-                    {columns.map((column,i)=>
-                      <div 
-                        key={column.dataIndex} 
-                        style={{width:column.width||150}}
-                        className={classNames(styles.rcrCol,{[styles.rcrBorderRight]:i!==columns.length-1,[styles.rcrEllipsis]:ellipsis})} 
-                      >
-                        {column.render&&column.render(item[column.dataIndex],item)||item[column.dataIndex]}
-                      </div>)}
-                  </div>
-                )):(
-                  <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-                )
-              }
-            </div>
-          </div>
+          
+            {pagination&&dataSource&&dataSource.length?(
+              <div className={classNames(styles.paginationWrap,placement)}>
+                <Pagination onChange={this.pageChange} {...pagination} />
+              </div>):''
+            }
           </Spin>
-          {pagination&&dataSource&&dataSource.length?(
-            <div className={classNames(styles.paginationWrap,placement)}>
-              <Pagination onChange={this.pageChange} {...pagination} />
-            </div>):''
-          }
         </div>
       );
     }
