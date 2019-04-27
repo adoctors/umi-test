@@ -17,6 +17,8 @@ import styles from './MyTable.less';
  * pagination       分页相关
  * paginationPlacement  分页所处方向,可选值：left、right、center。默认left
  * loading
+ * showTitle        是否显示每个单元格的title(只适用于数据自己渲染的，自定义结构自行处理)，默认false
+ *
  */
 class MyTable extends Component {
 
@@ -135,8 +137,14 @@ class MyTable extends Component {
 
     render() {
       const {columns,tableWidth,dataSource}=this.state;
-      const {ellipsis,headerBlock,pagination,paginationPlacement,loading}=this.props;
+      const {ellipsis,headerBlock,pagination,paginationPlacement,loading,showTitle}=this.props;
       const placement=styles[paginationPlacement]||'';
+      const showPagination=(()=>{
+        if(pagination===undefined) return false;
+        const {total,pageSize}=pagination;
+        return total>pageSize;
+      })();
+      const shotTit=showTitle===undefined?false:showTitle;
       return (
         <div className={styles.rcrTableWrapRelative}>
           <Spin size="large" spinning={loading===undefined?false:loading}>
@@ -175,7 +183,10 @@ class MyTable extends Component {
                           style={{width:column.width||150}}
                           className={classNames(styles.rcrCol,{[styles.rcrBorderRight]:i!==columns.length-1,[styles.rcrEllipsis]:ellipsis})} 
                         >
-                          {column.render&&column.render(item[column.dataIndex],item)||item[column.dataIndex]}
+                          {column.render&&column.render(item[column.dataIndex],item)||
+                          (shotTit?<span title={item[column.dataIndex]}>{item[column.dataIndex]}</span>:item[column.dataIndex])
+                          }
+                          
                         </div>)}
                     </div>
                   )):(
@@ -184,8 +195,8 @@ class MyTable extends Component {
                 }
               </div>
             </div>
-          
-            {pagination&&dataSource&&dataSource.length?(
+            
+            {pagination&&dataSource&&dataSource.length&&showPagination?(
               <div className={classNames(styles.paginationWrap,placement)}>
                 <Pagination onChange={this.pageChange} {...pagination} />
               </div>):''
