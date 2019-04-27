@@ -9,6 +9,21 @@ import DragableBody from './BodyRows';
 import styles from './Transfers.less';
 
 const  deepCopy= (obj)=>JSON.parse(JSON.stringify(obj));
+const deWeight=(arr1Name, arr2Name,name)=>{
+  const arr1=arr1Name.map(item=>item[name]);
+  const arr2=arr2Name.map(item=>item[name]);
+  const diff=arr1.concat(arr2).filter((v, i, arr)=> arr.indexOf(v) === arr.lastIndexOf(v));
+  const list= arr1.length>=arr2.length?arr1Name:arr2Name;
+  let arr=[];
+  for(let i=0;i<list.length;i++){
+    for(let j=0;j<diff.length;j++){
+      if(list[i][name]===diff[j]){
+        arr.push(list[i])
+      }
+    }
+  }
+  return arr;
+}
 
 /**
  *
@@ -73,24 +88,31 @@ class Transfer extends React.Component {
     this.setState({leftList,leftSelect,rightList,rightSelect,});
   }
 
-  static getDerivedStateFromProps(props, state) {
-    let data={};
-    if(!isEqual(props.leftList, state.leftList)&&state.leftList.length<1){
-      data.leftList=props.leftList;
+  componentWillReceiveProps(nextProps){
+    const {leftList,leftSelect,rightList,rightSelect,}=this.state;
+    if(!isEqual(nextProps.leftList,leftList)){
+      this.setState({
+        leftList:nextProps.leftList
+      })
     }
 
-    if(!isEqual(props.leftSelect, state.leftSelect)&&state.leftSelect.length<1){
-      data.leftSelect=props.leftSelect; 
+    if(!isEqual(nextProps.leftSelect,leftSelect)){
+      this.setState({
+        leftSelect:nextProps.leftSelect
+      })
     }
 
-    if(!isEqual(props.rightList, state.rightList)&&state.rightList.length<1){
-      data.rightList=props.rightList;
+    if(!isEqual(nextProps.rightList,rightList)){
+      this.setState({
+        rightList:nextProps.rightList
+      })
     }
 
-    if(!isEqual(props.rightSelect, state.rightSelect)&&state.rightSelect.length<1){
-      data.rightSelect=props.rightSelect; 
+    if(!isEqual(nextProps.rightSelect,rightSelect)){
+      this.setState({
+        rightSelect:nextProps.rightSelect
+      })
     }
-    return data;
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -147,7 +169,7 @@ class Transfer extends React.Component {
       const toListName=`${to}List`;
       const selectListName=`${from}Select`;
       // 相关数据源
-      const fromLlist=deepCopy(this.state[fromListName]);         // 需要变少的一项
+      const fromLlist=this.state[fromListName];         // 需要变少的一项
       const toList=this.state[toListName];         // 会增加的一项
       const selectList=this.state[selectListName];     // 需要变少列表里选中的项
 
@@ -156,15 +178,9 @@ class Transfer extends React.Component {
         checked:false,
       }));
 
-      for(let i=0;i<fromLlist.length;i++){
-        for(let j=0;j<selectList.length;j++){
-          if(fromLlist[i].name===selectList[j].name){
-            fromLlist.splice(i,1);
-          }
-        }
-      }
+      const arr=deWeight(fromLlist,selectList,'name');
       this.setState({
-        [fromListName]:fromLlist,
+        [fromListName]:arr,
         [toListName]:toListVal,
         leftAllChecked:false,
         rightAllChecked:false,
