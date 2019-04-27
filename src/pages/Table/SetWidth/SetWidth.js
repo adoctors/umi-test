@@ -127,6 +127,7 @@ class SetWidth extends Component {
             pagination={pagination}
             onRow={this.onRowClick}
             paginationPlacement="right"
+            loading={false}
             ellipsis
           />
         </div>

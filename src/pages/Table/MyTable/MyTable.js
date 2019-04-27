@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import isEqual from 'lodash/isEqual';
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination, Spin  } from 'antd';
 
 import styles from './MyTable.less';
 /**
@@ -16,6 +16,7 @@ import styles from './MyTable.less';
  * headerBlock      可插入头部信息
  * pagination       分页相关
  * paginationPlacement  分页所处方向,可选值：left、right、center。默认left
+ * loading
  */
 class MyTable extends Component {
 
@@ -134,11 +135,12 @@ class MyTable extends Component {
 
     render() {
       const {columns,tableWidth,dataSource}=this.state;
-      const {ellipsis,headerBlock,pagination,paginationPlacement}=this.props;
+      const {ellipsis,headerBlock,pagination,paginationPlacement,loading}=this.props;
       const placement=styles[paginationPlacement]||'';
       return (
         <div className={styles.rcrTableWrapRelative}>
-          <div className={styles.rcrTableWrap} ref={this.tableWrapDOM}>
+          <Spin size="large" spinning={loading===undefined?false:loading}>
+            <div className={styles.rcrTableWrap} ref={this.tableWrapDOM}>
             {/* 表头 */}
             <div className={styles.rcrTableTitWrap} style={{width:tableWidth}}>
               {headerBlock&&headerBlock}
@@ -182,7 +184,7 @@ class MyTable extends Component {
               }
             </div>
           </div>
-          
+          </Spin>
           {pagination&&dataSource&&dataSource.length?(
             <div className={classNames(styles.paginationWrap,placement)}>
               <Pagination onChange={this.pageChange} {...pagination} />
