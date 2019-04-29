@@ -41,7 +41,7 @@ class MyTable extends Component {
       }
 
       if(!isEqual(props.dataSource, state.dataSource)){
-        if(props.pagination.pageSize){
+        if(props.dataSource.length>props.pagination.pageSize){
           const pageDataSource = (currentPage,size) => {
             const propsDataSource=props.dataSource;
             const start=(currentPage-1)*size;
