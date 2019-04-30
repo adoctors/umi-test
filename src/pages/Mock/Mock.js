@@ -3,6 +3,8 @@ import { connect } from 'dva';
 import MockData from 'mockjs';
 // import { Button } from 'antd';
 
+import Func from './Func';
+
 
 
 const data=MockData.mock({
@@ -45,6 +47,10 @@ class Mock extends PureComponent {
     return (
       <div>
         <p>mock</p>
+        <Func
+          name="我是函数式组件"
+          title="没错！"
+        />
       </div>
     )
   }

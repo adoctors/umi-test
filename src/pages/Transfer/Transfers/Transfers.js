@@ -30,8 +30,8 @@ const deWeight=(arr1Name, arr2Name,name)=>{
  *
  * @class Transfer
  * leftList         穿梭框左侧数据        必传
- * leftSelect       穿梭框左侧选中选项        必传
- * rightList        穿梭框左侧数据        可选
+ * leftSelect       穿梭框左侧选中选项        可选
+ * rightList        穿梭框左侧数据        必传
  * rightSelect      穿梭框左侧选中选项        可选
  * onChange         获取最终结果          可选
  */
