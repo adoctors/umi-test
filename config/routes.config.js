@@ -46,6 +46,12 @@ export default [
         icon: 'block',
         component: './Carousel/index',
       },
+      {
+        path: '/test',
+        name: 'test',
+        icon: 'block',
+        component: './Test/index',
+      },
     ],
   },
 ];
