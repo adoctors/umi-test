@@ -29,6 +29,12 @@ export default [
         component: './Table/ColumnsWidth',
       },
       {
+        path: '/table/v2',
+        name: 'MyTableV2',
+        icon: 'block',
+        component: './Table/MyTableV2/MyTableV2',
+      },
+      {
         path: '/dnd',
         name: 'react-dnd',
         icon: 'block',
