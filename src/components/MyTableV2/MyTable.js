@@ -34,6 +34,7 @@ const sortDirections = ['','descend', 'ascend'];
  * getSorter        获取当前列的排序及列名
  */
 
+
 class MyTable extends Component {
 
     static propTypes = {
@@ -123,7 +124,6 @@ class MyTable extends Component {
               if(selectedRowKeys[i]===item[returnKeyName]) item.checked=true;
             }
           }
-          
           return item;
         }):[];
 
@@ -162,7 +162,7 @@ class MyTable extends Component {
           lastColWidth-=columns[i].width;
         }
         columns[columns.length-1].width=lastColWidth-2;
-        this.setState({columns});
+        this.setState({columns,tableWidth:tableWidth-2});
       }
     }
 
@@ -299,6 +299,8 @@ class MyTable extends Component {
         return total>pageSize;
       })();
 
+      const showPaginationFlag=pagination&&dataSource&&dataSource.length&&showPagination;
+
       const SortIcon = (currentSort,dataIndex) =>(
         <div style={{display:'inline-block',marginLeft:2}}>
           <div className={styles.sortIconWrap} onClick={()=>this.sortToggle(dataIndex)}>
@@ -313,7 +315,11 @@ class MyTable extends Component {
           <Spin size="large" spinning={loading===undefined?false:loading}>
       
             <div className={styles.rcrTableWrapWrap}>
-              <div className={styles.rcrTableWrap} ref={this.tableWrapDOM}>
+              <div 
+                className={styles.rcrTableWrap} 
+                ref={this.tableWrapDOM}
+                style={{bottom:showPaginationFlag?48:0}}
+              >
                 {/* 表头 */}
                 <div className={styles.rcrTableTitWrap} style={{width:tableWidth,top:titTop}}>
                   {/* 插入头部 */}
@@ -387,7 +393,7 @@ class MyTable extends Component {
               </div>
             </div>
 
-            {pagination&&dataSource&&dataSource.length&&showPagination?(
+            {showPaginationFlag?(
               <div className={classNames(styles.paginationWrap,placement)}>
                 <Pagination onChange={this.pageChange} {...pagination} />
               </div>):''
