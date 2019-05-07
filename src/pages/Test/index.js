@@ -2,6 +2,7 @@ import React from 'react';
 
 import CounterButton from './Componment/CounterButton';
 import PureComponent from './Componment/PureComponent';
+import HTMLS from './HTMLS/HTMLS';
 
 
 class Test extends React.Component {
@@ -29,6 +30,7 @@ class Test extends React.Component {
         <p />
         <button onClick={this.handleClick}>click</button>
         <PureComponent words={words} />
+        <HTMLS />
       </div>
     );
   }
