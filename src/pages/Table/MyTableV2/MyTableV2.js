@@ -59,13 +59,11 @@ class MyTableV2 extends React.Component {
     const columns=[{
       title: '姓名',
       dataIndex: 'name',
-      key: 'name',
       sort:'ascend',
       width:200,
     }, {
       title: '标签',
       dataIndex: 'tags',
-      key: 'tags',
       width:200,
       render:(text)=>(
         <div title={text.join('、')}>
@@ -77,7 +75,6 @@ class MyTableV2 extends React.Component {
     }, {
       title: '年龄',
       dataIndex: 'age',
-      key: 'age',
       width:200,
       render:(text)=>(
         <div>{text} - age</div>
@@ -85,7 +82,6 @@ class MyTableV2 extends React.Component {
     }, {
       title: (<span>住址</span>),
       dataIndex: 'address',
-      key: 'address',
       width:200,
     },]
 

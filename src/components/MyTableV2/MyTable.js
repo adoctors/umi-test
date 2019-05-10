@@ -15,23 +15,23 @@ const sortDirections = ['','descend', 'ascend'];
  *
  * @class MyTable
  * @extends {Component}
- * dataSource       列表数据源
- * columns          表头
- * columnsWidth     是否可以拖动改变列宽,默认false
- * ellipsis         单元格是否溢出隐藏,默认false
- * onRow            点击行的操作
- * headerBlock      可插入头部信息
- * pagination       分页相关
- * paginationPlacement  分页所处方向,可选值：left、right、center。默认left
- * loading
- * showTitle        是否显示每个单元格的title(只适用于数据自己渲染的，自定义结构自行处理)，默认false
- * fixedHeight      内容行是否固定高度,默认false
- * rowSelection:{   表格行的选择与操作Checkbox
- *                  returnKeyName,     // 已选项返回那个key对应的值
- *                  selectedRowKeys,   // 已选项的集合
- *                  onChange: this.onSelectChange,     // 选择时的变化函数
+ * @param { array } dataSource  列表数据源  必填
+ * @param { array } columns 表头  必填
+ * @param { boolean } columnsWidth  是否可以拖动改变列宽,默认false
+ * @param { boolean } ellipsis  单元格是否溢出隐藏,默认false
+ * @param { function } onRow  点击行的操作
+ * @param { Node } headerBlock  可插入头部信息
+ * @param { object } pagination 分页相关  必填
+ * @param { string } paginationPlacement  分页所处方向,可选值：left、right、center。默认left
+ * @param { boolean } loading 默认false
+ * @param { boolean } showTitle 是否显示每个单元格的title(只适用于数据自己渲染的，自定义结构自行处理)，默认false
+ * @param { boolean } fixedHeight 内容行是否固定高度,默认false
+ * @param { object } rowSelection:{   表格行的选择与操作Checkbox
+ *                   returnKeyName,     // 已选项返回那个key对应的值
+ *                   selectedRowKeys,   // 已选项的集合
+ *                   onChange: this.onSelectChange,     // 选择时的变化函数
  * }
- * getSorter        获取当前列的排序及列名
+ * @param {function} getSorter        获取当前列的排序及列名
  */
 
 
@@ -336,7 +336,7 @@ class MyTable extends Component {
                   {
                     columns&&columns.map((item,index)=>
                       <div 
-                        key={item.key} 
+                        key={item.dataIndex} 
                         className={classNames(styles.rcrCol,styles.rcrTableTit,{[styles.rcrBorderRight]:index!==columns.length-1})} 
                         style={{width:item.width||150}}
                         ref={item.dataIndex}
@@ -362,7 +362,7 @@ class MyTable extends Component {
                     dataSource&&dataSource.length?dataSource.map((item,index)=>(
                       <div 
                         className={classNames(styles.rcrTableRow,{[styles.rcrBorderBottom]:index!==dataSource.length-1})}
-                        key={item.key}
+                        key={item.dataIndex}
                         onClick={e=>this.rowClick(e,item)}
                       >
                         {
