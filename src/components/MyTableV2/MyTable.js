@@ -8,6 +8,7 @@ import styles from './MyTable.less';
 
 const ObjectNonEmpty = obj => Object.keys(obj).length>0;
 
+// 排序相关 默认 倒序 升序
 const sortDirections = ['','descend', 'ascend'];
 
 /**
@@ -34,7 +35,6 @@ const sortDirections = ['','descend', 'ascend'];
  * @param {function} getSorter        获取当前列的排序及列名
  */
 
-
 class MyTable extends Component {
 
     static propTypes = {
@@ -59,7 +59,7 @@ class MyTable extends Component {
       columnsWidth: false,
       ellipsis: false,
       onRow: () => {},
-      headerBlock: '',
+      headerBlock: <span />,
       pagination: {},
       paginationPlacement: 'left',
       loading: false,
@@ -347,6 +347,7 @@ class MyTable extends Component {
                         {
                           columnsWidth&&(
                             <div
+                              key={item.dataIndex}
                               className={styles.rcrMoveBtn} 
                               onMouseDown={(e)=>this.columnMouseDown(e,index,item.dataIndex)}
                             />
@@ -368,7 +369,7 @@ class MyTable extends Component {
                         {
                           ObjectNonEmpty(rowSelection)&&(
                             <div className={classNames(fixedHeight?styles.rcrColHeight:styles.rcrCol,)}>
-                              <Checkbox onClick={e=>this.checkedRow(e,item,index)} checked={item.checked} />
+                              <Checkbox key={item.dataIndex} onClick={e=>this.checkedRow(e,item,index)} checked={item.checked} />
                             </div>
                           )
                         }
@@ -380,7 +381,7 @@ class MyTable extends Component {
                             className={classNames(fixedHeight?styles.rcrColHeight:styles.rcrCol,{[styles.rcrEllipsis]:ellipsis})} 
                           >
                             {column.render&&column.render(item[column.dataIndex],item)||
-                            (showTitle?<span title={item[column.dataIndex]}>{item[column.dataIndex]}</span>:item[column.dataIndex])
+                            (showTitle?<span title={item[column.dataIndex]} key={item[column.dataIndex]}>{item[column.dataIndex]}</span>:item[column.dataIndex])
                             }
                             
                           </div>)}
