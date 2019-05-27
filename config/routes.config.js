@@ -19,7 +19,7 @@ export default [
       {
         path: '/mock/test',
         name: 'mock-test',
-        icon: 'block',
+        icon: 'database',
         component: './Mock/Mock',
       },
       {
@@ -31,7 +31,7 @@ export default [
       {
         path: '/table/v2',
         name: 'MyTableV2',
-        icon: 'block',
+        icon: 'table',
         component: './Table/MyTableV2/MyTableV2',
       },
       {
@@ -57,6 +57,12 @@ export default [
         name: 'test',
         icon: 'block',
         component: './Test/index',
+      },
+      {
+        path: '/list',
+        name: 'list',
+        icon: 'ordered-list',
+        component: './List/List',
       },
     ],
   },

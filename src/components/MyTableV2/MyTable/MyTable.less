@@ -1,0 +1,169 @@
+.rcrTableBgWrap{
+  // position: relative;
+  // top:0;
+  // left:0;
+  position: absolute;
+  width:100%;
+  min-width: 800px;
+  height:100%;
+  top:0;
+  left:0;
+  // background-color:pink;
+  overflow: auto;
+  :global{
+    .ant-spin-nested-loading,.ant-spin-container{
+      position: absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+    }
+  }
+  .activeBg{
+    background:rgba(0,0,0,0.04);
+  }
+  .colBg{
+    background:rgba(0, 0, 0, 0.01);
+  }
+  .titBg{
+    background:#f5f5f5;
+  }
+  .rcrTableWrapWrap{
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow-x: auto;
+  }
+  // background-color:#fff;
+  .paginationWrap{
+    position: absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    min-width: 800px;
+    padding:5px 10px 5px 0 ;
+    display: flex;
+    align-items: center;
+    .showTotal{
+      margin-left:20px;
+    }
+  }
+  .right{
+    flex-direction: row-reverse;
+  }
+  .center{
+    justify-content: center;
+  }
+}
+
+.rcrTableWrap{
+  position: absolute;
+  width:100%;
+  min-width: 800px;
+  top:0;
+  // bottom:52px;
+  border-top:1px solid #e8e8e8;
+  // background-color:#fff;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+// 边框；right&borrom
+.rcrBorderRight{
+  border-right: 1px solid #e8e8e8;
+}
+.rcrBorderBottom{
+  border-bottom: 1px solid #e8e8e8;
+}
+
+// 表格头部各列名称
+.rcrTableTitWrap{
+  position: relative;
+  left:0;
+  top:0;
+  z-index: 1;
+  display: flex;
+  color:rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  background-color:#fafafa;
+  border-bottom: 1px solid #e8e8e8;
+}
+// 单个列单元格
+.rcrTableTit{
+  position: relative;
+  top:0;
+  left:0;
+  display: flex;
+  // align-items: center;
+  .titAndSortWrap{
+    width:100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding:16px;
+    &:hover{
+      background:rgba(0,0,0,0.04);
+    }
+  }
+  .titFiltersWrap{
+    width:20px;
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+      background:rgba(0,0,0,0.04);
+    }
+  }
+  .rcrMoveBtn{
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    right:-2px;
+    top:0;
+    // background:pink;
+    cursor: col-resize;
+  }
+}
+// 行
+.rcrTableRow{
+  display: flex;
+  cursor: pointer;
+  &:hover{
+    background: #e6f7ff;
+  }
+}
+
+.rcrEllipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rcrCol{
+  box-sizing: border-box;
+  padding:16px;
+}
+
+.rcrColHeight{
+  box-sizing: border-box;
+  padding:0 16px;
+  height:53px;
+  display: flex;
+  align-items: center;
+}
+
+.sortIconWrap{
+  width:14px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  :global{
+    .anticon svg{
+      width:11px;
+      height:11px;
+    }
+  }
+}
