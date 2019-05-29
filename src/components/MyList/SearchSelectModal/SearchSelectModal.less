@@ -1,0 +1,50 @@
+.SearchSelectModalWrap{
+  position: relative;
+  top:0;
+  left:0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  &:hover{
+    background:rgba(0,0,0,0.04);
+  }
+  .dropdownWrap{
+    position: absolute;
+    top:36px;
+    left:-60px;
+    z-index:1;
+    width:160px;
+    box-sizing: border-box;
+    padding:10px;
+    background:#fff;
+    border:1px solid #e8e8e8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    :global{
+      .ant-checkbox-wrapper{
+        display:flex;
+        align-items: center;
+        span:nth-of-type(2){
+          width:100px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      
+    }
+  }
+  .rangePickerWrap{
+    width:334px;
+    position: absolute;
+    top:36px;
+    left:-144px;
+  }
+  .dropdownFooter{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top:6px;
+  }
+}
+

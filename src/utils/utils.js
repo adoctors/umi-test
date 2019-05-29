@@ -1,4 +1,51 @@
-/* eslint no-useless-escape:0 import/prefer-default-export:0 */
+import request from './request';
+import api from './api.config';
+/**
+ * 通用请求Api方法
+ * @param apiName(String)：调用的api名称
+ * @param reqType(String)：请求的类型：get | post | delete
+ * @param data(Object)：数据的内容
+ * @param placeholerParams(Object)：占位符内容
+ */
+export function requestApi({ apiName, reqType, data, placeholerParams }) {
+  const method = reqType.toUpperCase();
+  let url = api[apiName];
+  const req={ method };
+  const params = placeholerParams ? Object.keys(placeholerParams) : [];
+  if (params.length) {
+    for(let i=0;i<params.length;i+=1){
+      url = url.replace(`:${params[i]}`, placeholerParams[params[i]]);
+    }
+  }
+  if (method === 'GET' && data) {
+    req.data=data;
+  }
+  if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+    req.body=JSON.stringify(data);
+  }
+  return request(url, req);
+}
+
+// dispatch({
+//   type: 'modal/effectName',
+//   payload: {
+//     apiName: '',
+//     reqType: 'get',
+//     data: {
+//       bid,
+//     },
+//     placeholerParams: {
+//       offset,
+//       size,
+//     },
+//   },
+//   successCallback: ({ data, total }) => {
+//     // console.log(data.calls)
+//   },
+// });
+
+
+
 const reg = /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/;
 
 export function isUrl(path) {
