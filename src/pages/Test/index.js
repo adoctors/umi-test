@@ -6,6 +6,7 @@ import HTMLS from './HTMLS/HTMLS';
 
 import ContextTest from '../../components/Test/Context/Context01/index';
 import ContextTest02 from '../../components/Test/Context/Context02/index';
+import ContextTest03 from '../../components/Test/Context/Context03/index';
 
 
 class Test extends React.Component {
@@ -38,6 +39,8 @@ class Test extends React.Component {
         <ContextTest />
         <p>ContextTest02:</p>
         <ContextTest02 />
+        <p>ContextTest03:</p>
+        <ContextTest03 />
       </div>
     );
   }
