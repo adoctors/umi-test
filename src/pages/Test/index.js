@@ -1,4 +1,5 @@
 import React from 'react';
+import { Tabs } from 'antd';
 
 import CounterButton from './Componment/CounterButton';
 import PureComponent from './Componment/PureComponent';
@@ -8,7 +9,11 @@ import ContextTest from '../../components/Test/Context/Context01/index';
 import ContextTest02 from '../../components/Test/Context/Context02/index';
 import ContextTest03 from '../../components/Test/Context/Context03/index';
 
+import StateFromProps from '../../components/Test/StateFromProps/Index'
 
+import styles from './Test.less';
+
+const { TabPane } = Tabs;
 class Test extends React.Component {
 
   state = {
@@ -25,22 +30,49 @@ class Test extends React.Component {
 
   render() {
     const {words}=this.state;
+    const tabList = [
+      {
+        name:'HTML-render',
+        componment:<HTMLS />
+      },
+      {
+        name:'ContextTest',
+        componment:(
+          <div>
+            <p>ContextTest</p>
+            <ContextTest />
+            <p>ContextTest02:</p>
+            <ContextTest02 />
+            <p>ContextTest03:</p>
+            <ContextTest03 />
+          </div>
+        )
+      },
+      {
+        name:'PureComponent',
+        componment:(
+          <div>
+            <CounterButton color="#2fe1a8" />
+            <button onClick={this.handleClick}>click</button>
+            <PureComponent words={words} />
+          </div>
+        )
+      },
+      {
+        name:'StateFromProps',
+        componment:<StateFromProps />
+      }
+    ]
+
     return (
-      <div>
-        <p>tests</p>
-        <CounterButton color="#2fe1a8" />
-        <p />
-        <p />
-        <p />
-        <button onClick={this.handleClick}>click</button>
-        <PureComponent words={words} />
-        <HTMLS />
-        <p>ContextTest</p>
-        <ContextTest />
-        <p>ContextTest02:</p>
-        <ContextTest02 />
-        <p>ContextTest03:</p>
-        <ContextTest03 />
+      <div className={styles.testWrap}>
+        <Tabs defaultActiveKey="StateFromProps" tabPosition='top' style={{ height: 220 }}>
+          {tabList.map(item => (
+            <TabPane tab={item.name} key={item.name}>
+              {item.componment}
+            </TabPane>
+          ))}
+        </Tabs>
       </div>
     );
   }
