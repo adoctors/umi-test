@@ -4,6 +4,9 @@ import CounterButton from './Componment/CounterButton';
 import PureComponent from './Componment/PureComponent';
 import HTMLS from './HTMLS/HTMLS';
 
+import ContextTest from '../../components/Test/Context/Context01/index';
+import ContextTest02 from '../../components/Test/Context/Context02/index';
+
 
 class Test extends React.Component {
 
@@ -31,6 +34,10 @@ class Test extends React.Component {
         <button onClick={this.handleClick}>click</button>
         <PureComponent words={words} />
         <HTMLS />
+        <p>ContextTest</p>
+        <ContextTest />
+        <p>ContextTest02:</p>
+        <ContextTest02 />
       </div>
     );
   }
