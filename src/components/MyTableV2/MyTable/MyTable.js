@@ -7,6 +7,7 @@ import { Empty, Pagination, Spin, Checkbox, Icon } from 'antd';
 import styles from './MyTable.less';
 
 const ObjectNonEmpty = obj => Object.keys(obj).length>0;
+const defaultWidth = 150;
 
 // 排序相关 默认 倒序 升序
 const sortDirections = ['','descend', 'ascend'];
@@ -91,6 +92,7 @@ class MyTable extends Component {
       if(columns&&columns.length){
         let totalWidth=0;
         for(let i=0;i<columns.length;i++){
+          if(!columns[i].width) columns[i].width=defaultWidth;
           totalWidth+=columns[i].width;
         }
         const tableWidth=this.tableWrapDOM.current.clientWidth;

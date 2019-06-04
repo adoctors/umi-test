@@ -5,7 +5,8 @@ import { Divider, Menu, Dropdown, Icon, } from 'antd';
 
 import { getLocalItem,setLocalItem} from '../../../utils/utils'
 
-import MyTable from '../../../components/MyTableV2/MyTable';
+// import MyTable from '../../../components/MyTableV2/MyTable';
+import MyTable from '../../../components/MyTableV2/MyTable/MyTable';
 
 import styles from './MyTableV2.less';
 
@@ -183,7 +184,7 @@ class MyTableV2 extends React.Component {
     };
 
     return (
-      <div>
+      <div className={styles.tableV2Wrap}>
         <p>我是MyTableV2展示页面</p>
         <Divider />
         <div className={styles.myTableWrap}>

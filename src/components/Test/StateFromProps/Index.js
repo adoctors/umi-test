@@ -12,18 +12,6 @@ class StateFromProps extends React.Component {
     btnVal:'Primary',
   }
 
-  // changeBtnVal = () => {
-  //   const {name}=this.state;
-  //   this.setState((state,props)=>{
-  //     console.log(state,props)
-  //     return {btnVal:'Primary-change'};
-  //   })
-  //   this.setState({name:'name-change'},()=>{
-  //     console.log(this.state.name,name)   // name-change initVal - parent
-  //   })
-  // }
-
-
   render() {
     const {btnVal} = this.state;
     return (
