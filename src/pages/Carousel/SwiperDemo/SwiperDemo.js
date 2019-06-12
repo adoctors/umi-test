@@ -20,9 +20,14 @@ class PageName extends PureComponent {
 
   componentDidMount() {
     MySwiper = new Swiper('.swiper-container', {
-      setWrapperSize :true,
-      watchOverflow: true,
-      slidesPerView: 'auto',
+      setWrapperSize :true, // 会在Wrapper上添加等于slides相加的宽或高
+      watchOverflow: true,  // 当没有足够的slide切换时，例如只有1个slide，swiper会失效且隐藏导航等
+      // observer:true, // 修改swiper自己或子元素时，自动初始化swiper，   非常重要
+      // observeParents:true, // 修改swiper的父元素时，自动初始化swiper 
+      // onSlideChangeEnd: function(swiper){ 
+      //     swiper.update();   //swiper更新
+      // }
+      slidesPerView: 'auto',  // 设置slider容器能够同时显示的slides数量(carousel模式)
       // virtual: {
       //     slides:this.state.newlist,
       // }
