@@ -43,6 +43,7 @@
     "react-infinite-scroller": "^1.2.4",
     "react-media": "^1.8.0",
     "react-resizable": "^1.7.5",
+    "swiper": "^4.5.0",
     "umi-request": "^1.0.0",
     "xlsx": "^0.14.1"
   },

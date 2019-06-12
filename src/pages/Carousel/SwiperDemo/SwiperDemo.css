@@ -1,0 +1,32 @@
+
+
+
+/* .demoWrap{
+  width:600px;
+  height:300px;
+  background: pink;
+  
+} */
+
+
+/* .demoWrap .swiper-container{
+  width:600px;
+  height:300px;
+  background: pink;
+}
+
+.swiper-wrapper{
+  width:600px;
+  height:300px;
+  background: #2fe1a8;
+} */
+
+
+.swiperWrap{
+  display: flex;
+  align-items: center;
+}
+
+.c{
+  flex-shrink: 0;
+}
