@@ -70,6 +70,12 @@ export default [
         icon: 'paper-clip',
         component: './Hooks/Index',
       },
+      {
+        path: '/ts',
+        name: 'ts',
+        icon: 'alert',
+        component: './TS/Index',
+      },
     ],
   },
 ];
