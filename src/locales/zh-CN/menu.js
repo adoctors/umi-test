@@ -9,6 +9,7 @@ export default {
   'menu.carousel':'跑马灯demo',
   'menu.test':'test',
   'menu.list':'自定义列表',
+  'menu.hooks':'React.Hook',
   'menu.account.center': '个人中心',
   'menu.account.settings': '个人设置',
   'menu.account.trigger': '触发报错',

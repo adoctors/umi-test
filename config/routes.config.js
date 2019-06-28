@@ -64,6 +64,12 @@ export default [
         icon: 'ordered-list',
         component: './List/List',
       },
+      {
+        path: '/hooks',
+        name: 'hooks',
+        icon: 'paper-clip',
+        component: './Hooks/Index',
+      },
     ],
   },
 ];

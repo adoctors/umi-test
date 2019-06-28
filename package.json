@@ -35,7 +35,7 @@
     "path-to-regexp": "^2.4.0",
     "prop-types": "^15.5.10",
     "rc-animate": "^2.4.4",
-    "react": "^16.6.3",
+    "react": "^16.8.6",
     "react-container-query": "^0.11.0",
     "react-dnd": "^7.4.5",
     "react-dnd-html5-backend": "^7.4.4",
