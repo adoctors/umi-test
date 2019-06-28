@@ -36,6 +36,10 @@ class Mock extends PureComponent {
     // console.log(this.props)
     dispatch({
       type: 'mocks/test',
+      payload:{
+        apiName: 'mockUser',
+        reqType: 'get',
+      },
       callback: res => {
         // console.log(res)
       },

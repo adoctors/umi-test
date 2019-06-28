@@ -21,6 +21,10 @@ class SetWidth extends Component {
       const { dispatch } = this.props;
       dispatch({
         type: 'table/getTableData',
+        payload:{
+          apiName: 'getTableData',
+          reqType: 'get',
+        },
         callback: ({data:{dataSource}}) => {
           this.setState({dataSource});
           // this.pageChange(1);
