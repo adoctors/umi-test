@@ -2,6 +2,7 @@ import React, { useState } from 'react';        // 引入
 import { Divider } from 'antd';
 import HookLV0 from './HookLV0';
 import Timer from './Timer';
+import HookProps from './HookProps';
 
 import styles from './index.less';
 
@@ -20,6 +21,8 @@ function Hooks() {
       <Timer />
       <Divider />
       <HookLV0 msg={msg} />
+      <Divider />
+      <HookProps />
     </div>
   );
 }
