@@ -1,9 +1,39 @@
 import React from 'react';
 
 interface IProps {
-  list: any[];
+  list: IList[];
   name: string;
-  txt?:string;
+  txt?: string;
+  data?: IDataWrap;
+}
+
+interface IName {
+  name: string;
+}
+
+interface IList {
+  name: string;
+  value: string;
+  placement?: 'top' | 'left' | 'right' | 'bottom';
+}
+
+
+
+interface IDataWrap {
+  data: IData;
+  success: boolean;
+  message: string;
+}
+
+interface IData {
+  id: string;
+  // list: IDataList[]
+  list: Array<IDataList>
+}
+
+interface IDataList extends IName {
+  id: number;
+  score: number;
 }
 
 const TSFC: React.FC<IProps> = props =>{

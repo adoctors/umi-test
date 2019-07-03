@@ -163,3 +163,54 @@ function f3({ a, b }: C): void {
 function f2({ a, b } = { a: "", b: 0 }): void {
   // ...
 }
+
+
+
+
+
+// 小结 ------------------------------------------------
+// 基础类型
+// Number
+let num: number = 321321;
+// String
+let str: string = `hello world ${num}`;
+// Array
+let arr0: number[] = [1, 2, 3];
+let arr1: Array<string> = ['1', '2', '3'];
+// Tuple 元组
+let tuple: [string, number, boolean];
+tuple = ['id', 1001, true];
+// enum 枚举
+enum Days { Sun = 7, Mon = 1, Tue, Wed, Thu, Fri, Sat };
+let day: Days = Days.Sun;
+console.log(Days['Wed'] === 3); // true
+console.log(day); // 7
+// Any
+let notSure: any = 'string';
+notSure = 123;
+let notSureArr: any[] = ['1321', 123, true];
+// Void
+let useless: void = undefined;
+useless = null; // 只能赋值null or undefined
+function fun(num: number): void {
+  console.log(num + '%'); // 无返回值应当定义为void
+}
+// Null & Undefined
+let n0: null = null;
+let u0: undefined = undefined;
+num = u0; //可赋值给其他任何其他类型
+console.log(num); // undefined
+// Never 表示永远不存在的值的类型
+function infinite(): never {
+  while (true) {
+  }
+}
+// 类型断言，告诉ts对类型非常肯定并经过了检查
+let userInput: any = 'hello there'; // 此处假设我可以非常确定是字符串
+let strLength: number = (<string>userInput).length; // 断言userInput一定是字符串
+console.log(<number>strLength === 11); // true 断言strLength一定是数字
+let obj: object = {
+  userInput: userInput as string, // 也可使用as语法
+  strLength: strLength as number,
+};
+console.log(obj);

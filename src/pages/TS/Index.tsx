@@ -1,10 +1,11 @@
 import React from 'react';
 import TSFC from './components/TSFC';
 
-const list= [
+const list:any[] = [
   {
     name:'yellow',
     value:'#ffd033',
+    // placement:'abc'
   },
   {
     name:'green',
@@ -14,12 +15,31 @@ const list= [
     name:'blue',
     value:'#6471fd',
   },
+  {
+    name:'origin',
+    value:'rgba(239,166,29,0.94)',
+  }
 ]
+
+const data = {
+  success: true,
+  message: 'ok',
+  data:{
+    id:'xxx',
+    list:[
+      {
+        id: 1,
+        name: 'tom',
+        score: 100,
+      }
+    ]
+  }
+}
+
 
 
 export default (): React.ReactNode => (
   <div style={{ textAlign: 'center' }}>
-    123
-    <TSFC list={list} name='abc' />
+    <TSFC list={list} name='abc' data={data} />
   </div>
 );
