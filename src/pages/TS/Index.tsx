@@ -3,6 +3,8 @@ import TSFC from './components/TSFC';
 import T1 from './components/T1';
 import Simple from './My/Simple';
 import Common from './My/Common';
+import TInterface from './components/TInterface';
+import MyTableTSIndex from './MyTableTSIndex';
 
 const list:any[] = [
   {
@@ -46,5 +48,7 @@ export default (): React.ReactNode => (
     <T1 />
     <Simple />
     <Common />
+    <TInterface />
+    <MyTableTSIndex />
   </div>
 );
