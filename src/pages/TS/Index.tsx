@@ -1,5 +1,8 @@
 import React from 'react';
 import TSFC from './components/TSFC';
+import T1 from './components/T1';
+import Simple from './My/Simple';
+import Common from './My/Common';
 
 const list:any[] = [
   {
@@ -37,9 +40,11 @@ const data = {
 }
 
 
-
 export default (): React.ReactNode => (
   <div style={{ textAlign: 'center' }}>
     <TSFC list={list} name='abc' data={data} />
+    <T1 />
+    <Simple />
+    <Common />
   </div>
 );
