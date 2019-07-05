@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Divider, Menu, Dropdown, Icon, } from 'antd';
 
-import { getLocalItem,setLocalItem} from '../../../utils/utils'
+import { getLocalItem,setLocalItem} from '../../../utils/utils';
 
 // import MyTable from '../../../components/MyTableV2/MyTable';
 import MyTable from '../../../components/Table/MyTableV2/MyTable/MyTable';
