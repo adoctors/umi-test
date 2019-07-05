@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon,Dropdown,Menu } from 'antd';
 import { connect } from 'dva';
 
-import MyTable from '../MyTable/MyTable';
+import MyTable from '../../../components/Table/MyTableV1/MyTable';
 
 import styles from './SetWidth.less';
 

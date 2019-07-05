@@ -4,7 +4,6 @@ import T1 from './components/T1';
 import Simple from './My/Simple';
 import Common from './My/Common';
 import TInterface from './components/TInterface';
-import MyTableTSIndex from './MyTableTSIndex';
 
 const list:any[] = [
   {
@@ -43,12 +42,11 @@ const data = {
 
 
 export default (): React.ReactNode => (
-  <div style={{ textAlign: 'center' }}>
+  <div style={{ textAlign: 'center', width:'100%' }}>
     <TSFC list={list} name='abc' data={data} />
-    <T1 />
+    <T1 txt="txt" />
     <Simple />
     <Common />
-    <TInterface />
-    <MyTableTSIndex />
+    {/* <TInterface /> */}
   </div>
 );

@@ -4,6 +4,7 @@ export default {
   'menu.mock-test':'mock数据',
   'menu.columns-width':'可改变宽度table',
   'menu.MyTableV2':'自定义table-v2',
+  'menu.MyTableTS':'自定义table-TypeScript',
   'menu.react-dnd':'拖拽排序',
   'menu.transfer':'可排序穿梭框',
   'menu.carousel':'跑马灯demo',

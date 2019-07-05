@@ -11,13 +11,13 @@ interface AuthComponentProps extends ConnectProps {
 class My extends React.Component<AuthComponentProps> {
 
   componentDidMount(){
-    console.log(this.props)
+    // console.log(this.props)
     const { dispatch } = this.props;
     if(dispatch){   // 一定要加，dispatch初始可能是undefined
       dispatch({
         type: 'my/fetch',
         callback: res => {
-          console.log(res)
+          // console.log(res)
         },
       }); 
     }
@@ -26,7 +26,7 @@ class My extends React.Component<AuthComponentProps> {
   
   render(){
     const {selfMsg} = this.props;
-    console.log(selfMsg)
+    // console.log(selfMsg)
     return (
       <div>
         <p>TypeScript - props - Common - Component</p>

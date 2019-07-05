@@ -6,7 +6,7 @@ import { Divider, Menu, Dropdown, Icon, } from 'antd';
 import { getLocalItem,setLocalItem} from '../../../utils/utils'
 
 // import MyTable from '../../../components/MyTableV2/MyTable';
-import MyTable from '../../../components/MyTableV2/MyTable/MyTable';
+import MyTable from '../../../components/Table/MyTableV2/MyTable/MyTable';
 
 import styles from './MyTableV2.less';
 
@@ -97,20 +97,6 @@ class MyTableV2 extends React.Component {
       }
     }
     this.setState({columns});
-  }
-
-  pageChange = (page,size) => {
-    console.log(page,size)
-    const {dispatch}=this.props;
-    dispatch({
-      type: 'table/getTableDataPage',
-      payload: {
-        page,
-      },
-      callback: ({data:{Data,total}}) => {
-        this.setState({dataSource:Data,total});
-      },
-    }); 
   }
 
   setMenuClic = ({key}) => {

@@ -26,13 +26,19 @@ export default [
         path: '/table/columnswidth',
         name: 'columns-width',
         icon: 'block',
-        component: './Table/ColumnsWidth',
+        component: './Table/Index',
       },
       {
         path: '/table/v2',
         name: 'MyTableV2',
         icon: 'table',
-        component: './Table/MyTableV2/MyTableV2',
+        component: './Table/MyTableV2Index/MyTableV2',
+      },
+      {
+        path: '/table/ts',
+        name: 'MyTableTS',
+        icon: 'table',
+        component: './Table/MyTableTSIndex/index',
       },
       {
         path: '/dnd',

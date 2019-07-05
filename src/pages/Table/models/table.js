@@ -6,7 +6,8 @@ import {requestApi} from '../../../utils/utils'
 export default {
   namespace: 'table',
   state: {
-    name:'table'
+    name:'table',
+    message:' from table models'
   },
   reducers:{},
   effects:{

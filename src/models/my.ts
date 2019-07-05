@@ -48,7 +48,7 @@ const MyModel: MyModelType = {
   effects: {
     *fetch({ payload, callback }, { call, put }) {
       const data = yield call(query, payload);
-      console.log(data)
+      // console.log(data)
       yield put({ type: 'saveSeflMsg', payload: data });
       if (callback) callback(data);
     },

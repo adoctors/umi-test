@@ -4,9 +4,9 @@ import { Table,Divider  } from 'antd';
 import { Resizable } from 'react-resizable';
 import {Log,Logs} from '../../utils/utils';
 
-import SetWidth from './SetWidth/SetWidth';
+import SetWidth from './SetWidthV1Index/SetWidth';
 
-import './ColumnsWidth.less';
+import './Index.less';
 
 const ResizeableTitle = (props) => {
   const { onResize, width, ...restProps } = props;

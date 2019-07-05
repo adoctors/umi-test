@@ -9,11 +9,11 @@ interface IProps extends ConnectProps {
   columns: IColumns[];
   columnsWidth?: boolean;
   ellipsis?: boolean;
-  onRow?: ()=> void;
+  onRow?: (item)=> void;
   headerBlock?: React.ReactNode;
   pagination: {
     total: number;
-    showTotal?: string;
+    showTotal?: string|any;
     pageSize: number;
     [key: string]: any;
   };
@@ -22,12 +22,13 @@ interface IProps extends ConnectProps {
   showTitle?: boolean;
   fixedHeight?: boolean;
   rowSelection?: {
-    returnKeyName: string;
-    selectedRowKeys: string[];
-    onChange: ()=> void;
+    returnKeyName?: string;
+    selectedRowKeys?: string[];
+    onChange?: (selectedRowKeys:string)=> void;
   };
-  getSorter?: ()=> void;
-  modelName: string;
+  getSorter?: (dataIndex:string,currentSort:string)=> void;
+  onChange?: (page:any,size?:any)=> void;
+  setHistoryWidth?: (key,width)=> void;
 }
 
 interface IColumns {
@@ -51,6 +52,10 @@ interface PromiseRenderState {
 
 class MyTable extends Component<IProps,PromiseRenderState> {
 // class MyTable<P> extends React.Component<IProps> {
+
+  // static defaultProps: IProps = {
+  //   dataSource: '点击上传图片'
+  // };
 
   componentDidMount(){
     console.log(this.props)
