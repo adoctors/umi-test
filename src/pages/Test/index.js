@@ -9,7 +9,9 @@ import ContextTest from '../../components/Test/Context/Context01/index';
 import ContextTest02 from '../../components/Test/Context/Context02/index';
 import ContextTest03 from '../../components/Test/Context/Context03/index';
 
-import StateFromProps from '../../components/Test/StateFromProps/Index'
+import StateFromProps from '../../components/Test/StateFromProps/Index';
+
+import Lodash from './Lodash';
 
 import styles from './Test.less';
 
@@ -61,7 +63,12 @@ class Test extends React.Component {
       {
         name:'StateFromProps',
         componment:<StateFromProps />
-      }
+      },
+      {
+        name:'Lodash',
+        componment:<Lodash />
+      },
+      
     ]
 
     return (

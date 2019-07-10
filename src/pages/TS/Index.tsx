@@ -5,6 +5,8 @@ import Simple from './My/Simple';
 import Common from './My/Common';
 import TInterface from './components/TInterface';
 
+import styles from './Index.less';
+
 const list:any[] = [
   {
     name:'yellow',
