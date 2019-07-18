@@ -73,7 +73,7 @@ class Test extends React.Component {
 
     return (
       <div className={styles.testWrap}>
-        <Tabs defaultActiveKey="StateFromProps" tabPosition='top' style={{ height: 220 }}>
+        <Tabs defaultActiveKey="Lodash" tabPosition='top' style={{ height: 220 }}>
           {tabList.map(item => (
             <TabPane tab={item.name} key={item.name}>
               {item.componment}

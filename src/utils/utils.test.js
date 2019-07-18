@@ -1,4 +1,5 @@
-import { isUrl } from './utils';
+
+import { isUrl, fun } from './utils';
 
 describe('isUrl tests', () => {
   it('should return false for invalid and corner case inputs', () => {
@@ -36,3 +37,12 @@ describe('isUrl tests', () => {
     expect(isUrl('https://www.example.com/test/123?foo=bar')).toBeTruthy();
   });
 });
+
+describe('fun tests', () => {
+  const arr1 = [1,2];
+  const arr2 = [2,3];
+  it(`deWeight([${arr1}], [${arr2}]) return [1,3]`, () => {
+    expect(fun(arr1,arr2)).toStrictEqual([1,3]);
+  });
+});
+

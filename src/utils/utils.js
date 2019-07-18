@@ -159,3 +159,5 @@ export function setLocalItem(key, item) {
   }
   return localStorage.setItem(key, JSON.stringify(item));
 }
+
+export const fun = (arr1,arr2) => [1,3];
