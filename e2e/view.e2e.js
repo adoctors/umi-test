@@ -23,7 +23,8 @@ describe('关于是否为黑盒-不可见测试-百度搜索', () => {
     await page.type("#kw", "海贼王"); // 输入要搜索的关键词
     await page.click('#su');
 
-    await page.screenshot({ path: 'baidu-search.png', fullPage: true });
+    // 如果是相对路径，则从当前路径解析(项目在设备上的地址如：E:\umi\umi-test\e2e\screenshot)
+    await page.screenshot({ path: './e2e/screenshot/baidu-search.png', fullPage: true });
     // await browser.close();
     // 可以用page.isClosed()来检测Puppeteer中的页面是否已关闭：
   },90000);   // 这只测试用例的中止时长默认5000
