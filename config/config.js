@@ -2,6 +2,7 @@
 import { primaryColor } from '../src/defaultSettings';
 
 import routesConfig from './routes.config';
+import webpackPlugin from './plugin.config';
 
 export default {
   plugins: [
@@ -66,13 +67,15 @@ export default {
   manifest: {
     basePath: '/',
   },
-  // base:'/dist',       // 非根目录配置
+  chainWebpack: webpackPlugin,    // 修改webpack默认配置
+  base:'/dist',       // 非根目录配置,影响(打包后与开发时)路由
+  publicPath: '/dist/', // 非根目录配置,影响(打包后与开发时)静态资源的加载
   treeShaking: true,
   hash: true,
-  uglifyJSOptions(opts) {
-    opts.uglifyOptions.compress.drop_debugger = true;   // 删除debugger语句
-    opts.uglifyOptions.compress.drop_console = true;    // 删除所有console.*
-    opts.uglifyOptions.compress.pure_funcs= ['console.log'];  // 针对console.log进行删除，也可是console.info,或其他函数
-    return opts;
-  },
+  // uglifyJSOptions(opts) {
+  //   opts.uglifyOptions.compress.drop_debugger = true;   // 删除debugger语句
+  //   opts.uglifyOptions.compress.drop_console = true;    // 删除所有console.*
+  //   opts.uglifyOptions.compress.pure_funcs= ['console.log'];  // 针对console.log进行删除，也可是console.info,或其他函数
+  //   return opts;
+  // },
 };
