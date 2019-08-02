@@ -50,7 +50,7 @@ class Mock extends PureComponent {
   render() {
     return (
       <div>
-        <p>mock</p>
+        <p className="p1">mock</p>
         <Func
           name="我是函数式组件"
           title="没错！"
