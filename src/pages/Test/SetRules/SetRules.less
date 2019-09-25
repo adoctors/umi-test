@@ -1,0 +1,61 @@
+@Color:#333;
+.SetRulesWrap{
+  width: 100%;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  .header{
+    width: 100%;
+    height: 53px;
+    padding:16px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .name{
+      font-size: 20px;
+      color: @Color;
+    }
+  }
+  .conWrap{
+    // background:pink;
+    flex: auto;
+    .ruleRow {
+      display: flex;
+      padding: 10px 20px;
+      > div {
+        margin: auto;
+        margin-left: 0;
+        :global {
+          .ant-row.ant-form-item {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            > div {
+              margin: auto;
+              padding: 0;
+            }
+            .ant-form-item-control-wrapper {
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+    .tableScore {
+      display: flex;
+      div,
+      input {
+        margin: auto;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      div {
+        margin-top: 4px;
+      }
+      input {
+        width: 200px;
+        margin-left: 5px;
+      }
+    }
+  }
+}

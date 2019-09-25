@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 // import TableDnd from './Table/TableDnd';
 import Transfer from './CheckedAll/Transfer';
 import PDnd from './P/PDnd';
+import Demo2 from './demo2/index.tsx';
 // import {Log} from '../../utils/utils';
 
 
@@ -19,8 +20,11 @@ class Dnd extends PureComponent {
         <p>拖拽demo</p>
         {/* <TableDnd /> */}
         {/* <Transfer /> */}
-        <PDnd />
-        <PDnd />
+        {/* <PDnd /> */}
+        {/* <PDnd /> */}
+        <div className={styles.demo1}>
+          <Demo2 />
+        </div>
       </div>
     )
   }

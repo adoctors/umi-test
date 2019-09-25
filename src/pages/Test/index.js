@@ -11,6 +11,10 @@ import ContextTest03 from '../../components/Test/Context/Context03/index';
 
 import StateFromProps from '../../components/Test/StateFromProps/Index';
 
+import APITest from './APITest/APITest.tsx';
+
+import SetRules from './SetRules/SetRules.tsx';
+
 import Lodash from './Lodash';
 
 import styles from './Test.less';
@@ -66,14 +70,22 @@ class Test extends React.Component {
       },
       {
         name:'Lodash',
-        componment:<Lodash />
+        componment: <Lodash />
       },
+      {
+        name:'APITest',
+        componment: <APITest />
+      },
+      {
+        name:'SetRules',
+        componment: <SetRules />
+      }
       
     ]
 
     return (
       <div className={styles.testWrap}>
-        <Tabs defaultActiveKey="Lodash" tabPosition='top' style={{ height: 220 }}>
+        <Tabs defaultActiveKey="APITest" tabPosition='top' style={{ height: 220 }}>
           {tabList.map(item => (
             <TabPane tab={item.name} key={item.name}>
               {item.componment}
