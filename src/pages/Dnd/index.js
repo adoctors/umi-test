@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import Transfer from './CheckedAll/Transfer';
 import PDnd from './P/PDnd';
 import Demo2 from './demo2/index.tsx';
+import HooksDemo from './HooksDemo/HooksDemo.tsx';
 // import {Log} from '../../utils/utils';
 
 
@@ -22,14 +23,13 @@ class Dnd extends PureComponent {
         {/* <Transfer /> */}
         {/* <PDnd /> */}
         {/* <PDnd /> */}
-        <div className={styles.demo1}>
+        {/* <div className={styles.demo1}>
           <Demo2 />
-        </div>
+        </div> */}
+        <HooksDemo />
       </div>
     )
   }
 }
 
 export default Dnd;
-
-
